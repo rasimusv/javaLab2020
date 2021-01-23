@@ -16,3 +16,6 @@
 [submodule "EntityManager"]
 	path = EntityManager
 	url = https://github.com/rasimusv/EntityManager
+[submodule "ServletHomework"]
+	path = ServletHomework
+	url = https://github.com/rasimusv/ServletHomework
