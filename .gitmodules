@@ -10,3 +10,6 @@
 [submodule "SocketsHomework"]
 	path = SocketsHomework
 	url = https://github.com/rasimusv/SocketsHomework
+[submodule "AnnotationsHomework"]
+	path = AnnotationsHomework
+	url = https://github.com/rasimusv/AnnotationsHomework
