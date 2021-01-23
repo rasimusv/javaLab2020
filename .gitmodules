@@ -1,0 +1,3 @@
+[submodule "mvnDownloader"]
+	path = mvnDownloader
+	url = https://github.com/rasimusv/mvnDownloader
