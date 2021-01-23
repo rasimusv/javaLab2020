@@ -1,3 +1,6 @@
 [submodule "mvnDownloader"]
 	path = mvnDownloader
 	url = https://github.com/rasimusv/mvnDownloader
+[submodule "ThreadsWork"]
+	path = ThreadsWork
+	url = https://github.com/rasimusv/ThreadsWork
