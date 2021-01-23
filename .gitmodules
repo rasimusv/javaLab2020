@@ -7,3 +7,6 @@
 [submodule "MultiThreadDownloader"]
 	path = MultiThreadDownloader
 	url = https://github.com/rasimusv/MultiThreadDownloader
+[submodule "SocketsHomework"]
+	path = SocketsHomework
+	url = https://github.com/rasimusv/SocketsHomework
