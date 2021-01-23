@@ -4,3 +4,6 @@
 [submodule "ThreadsWork"]
 	path = ThreadsWork
 	url = https://github.com/rasimusv/ThreadsWork
+[submodule "MultiThreadDownloader"]
+	path = MultiThreadDownloader
+	url = https://github.com/rasimusv/MultiThreadDownloader
