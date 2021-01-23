@@ -13,3 +13,6 @@
 [submodule "AnnotationsHomework"]
 	path = AnnotationsHomework
 	url = https://github.com/rasimusv/AnnotationsHomework
+[submodule "EntityManager"]
+	path = EntityManager
+	url = https://github.com/rasimusv/EntityManager
