@@ -9,14 +9,14 @@
           integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="/static/css/login.css">
+    <link rel="stylesheet" href="/static/css/main.css">
 
     <title>Студенты</title>
 </head>
 <body>
 <div class="container">
     <div class="row">
-        <h1 <#if colorCookie??> style="color:${colorCookie.value}"</#if>>STUDENTS</h1>
+        <h1 <#if colorCookie??> style="color:${colorCookie}"</#if>>STUDENTS</h1>
         <form action="/students" method="post">
             <label>
                 <select name="color">

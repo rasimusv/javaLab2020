@@ -1,5 +1,6 @@
 package ru.itis.rasimusv.services;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.itis.rasimusv.dto.UserDto;
@@ -18,9 +19,9 @@ public class UsersServiceImpl implements UsersService {
 
     private final PasswordEncoder passwordEncoder;
 
-    private final UsersRepository<Long> usersRepository;
+    private final UsersRepository usersRepository;
 
-    public UsersServiceImpl(UsersRepository<Long> usersRepository, PasswordEncoder passwordEncoder) {
+    public UsersServiceImpl(UsersRepository usersRepository, PasswordEncoder passwordEncoder) {
         this.usersRepository = usersRepository;
         this.passwordEncoder = passwordEncoder;
     }
@@ -44,11 +45,6 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public List<UserDto> getAllUsers(int page, int size) {
-        return from(usersRepository.findAll(page, size));
-    }
-
-    @Override
     public List<ViewUserDto> getAllViewUsers() {
         return ViewUserDto.from(getAllUsers());
     }
@@ -60,26 +56,27 @@ public class UsersServiceImpl implements UsersService {
 
     @Override
     public Optional<UserDto> findUserByUsername(String username) {
-        return getAllUsers().stream().filter(u -> u.getUsername().equals(username)).findFirst();
+        return from(usersRepository.findByUsername(username));
     }
 
     @Override
     public boolean containsUserWithUsername(String username) {
-        return !usersRepository.findByUsername(username).isEmpty();
+        return usersRepository.findByUsername(username).isPresent();
     }
 
     @Override
     public UserDto getUser(Long userId) {
-        Optional<UserDto> userDto = from(usersRepository.findById(userId)).stream().findFirst();
+        Optional<UserDto> userDto = UserDto.from(usersRepository.findById(userId));
         return userDto.orElse(null);
     }
 
     @Override
     public boolean correctPassword(SignInForm userDto) {
-        UserDto mayBeUser = findUserByUsername(userDto.getUsername()).orElse(null);
+        Optional<UserDto> mayBeUser = findUserByUsername(userDto.getUsername());
 
-        if(mayBeUser != null) {
-            String hashPassword = mayBeUser.getHashPassword();
+        if(mayBeUser.isPresent()) {
+            UserDto user = mayBeUser.get();
+            String hashPassword = user.getHashPassword();
             return (hashPassword != null) && (passwordEncoder.matches(userDto.getPassword(), hashPassword));
         }
         return false;
@@ -87,9 +84,12 @@ public class UsersServiceImpl implements UsersService {
 
     @Override
     public void confirm(String confirmCode) {
-        User user = usersRepository.findByConfirmCode(confirmCode).get(0);
-        user.setState(User.State.CONFIRMED);
-        usersRepository.update(user);
+        Optional<User> mayBeUser = usersRepository.findByConfirmCode(confirmCode);
+        if (mayBeUser.isPresent()) {
+            User user = mayBeUser.get();
+            user.setState(User.State.CONFIRMED);
+            usersRepository.save(user);
+        }
     }
 
 }

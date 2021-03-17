@@ -7,6 +7,7 @@ import lombok.Data;
 import ru.itis.rasimusv.models.User;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -44,5 +45,10 @@ public class UserDto {
         return users.stream()
                 .map(UserDto::from)
                 .collect(Collectors.toList());
+    }
+
+    public static Optional<UserDto> from(Optional<User> user) {
+        return user.map(UserDto::from);
+
     }
 }

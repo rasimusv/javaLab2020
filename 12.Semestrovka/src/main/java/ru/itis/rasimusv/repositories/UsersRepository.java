@@ -1,12 +1,14 @@
 package ru.itis.rasimusv.repositories;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import ru.itis.rasimusv.models.User;
 
-import java.util.List;
+import java.util.Optional;
 
-public interface UsersRepository<ID> extends CrudRepository<User, ID> {
+public interface UsersRepository extends JpaRepository<User, Long> {
 
-    List<User> findByUsername(String username);
+    Optional<User> findByUsername(String username);
 
-    List<User> findByConfirmCode(String confirmCode);
+    Optional<User> findByConfirmCode(String confirmCode);
+
 }

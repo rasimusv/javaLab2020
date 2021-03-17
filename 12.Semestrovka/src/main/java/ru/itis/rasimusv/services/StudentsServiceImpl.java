@@ -11,9 +11,9 @@ import static ru.itis.rasimusv.dto.StudentDto.from;
 @Service
 public class StudentsServiceImpl implements StudentsService {
 
-    private final StudentsRepository<Long> studentsRepository;
+    private final StudentsRepository studentsRepository;
 
-    public StudentsServiceImpl(StudentsRepository<Long> studentsRepository) {
+    public StudentsServiceImpl(StudentsRepository studentsRepository) {
         this.studentsRepository = studentsRepository;
     }
 

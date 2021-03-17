@@ -1,6 +1,5 @@
 package ru.itis.rasimusv.controllers;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +9,6 @@ import ru.itis.rasimusv.services.UsersService;
 
 import java.util.List;
 
-@Slf4j
 @Controller
 public class UsersController {
 

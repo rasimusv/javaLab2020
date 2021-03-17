@@ -1,6 +1,5 @@
 package ru.itis.rasimusv.controllers;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +9,6 @@ import ru.itis.rasimusv.services.SignUpService;
 
 import javax.servlet.http.HttpSession;
 
-@Slf4j
 @Controller
 public class SignUpController {
 
@@ -20,10 +18,6 @@ public class SignUpController {
         this.signUpService = signUpService;
     }
 
-    @GetMapping("/success")
-    public String getSuccessPage() {
-        return "success_signup";
-    }
 
     @GetMapping("/signup")
     public String getSignUpPage(Model model, HttpSession session) {
@@ -35,7 +29,6 @@ public class SignUpController {
     @PostMapping("/signup")
     public String signUp(SignUpForm form, HttpSession session) {
 
-        log.error(form.toString());
         if (signUpService.signUp(form)) {
             session.setAttribute("Authenticated", "true");
             return "redirect:/";
