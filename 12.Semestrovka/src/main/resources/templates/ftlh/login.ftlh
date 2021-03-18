@@ -1,5 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
+<#ftl encoding="UTF-8"/>
+<#import "spring.ftl" as spring/>
+<!doctype html>
+<html lang="<@spring.message 'common.lang'/>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,41 +10,33 @@
           integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="/static/css/main.css">
 
-    <title>Студенты</title>
+    <title><@spring.message 'login.title'/></title>
 </head>
 <body>
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-md-11">
-            <h1 <#if colorCookie??> style="color:${colorCookie.value}"</#if>>STUDENTS</h1>
-            <form action="/students" method="post">
-                <label>
-                    <select name="color">
-                        <option value="red">RED</option>
-                        <option value="green">GREEN</option>
-                        <option value="blue">BLUE</option>
-                    </select>
-                </label>
-                <input type="submit" value="OK">
+        <div class="col-md-offset-3 col-md-6">
+            <form method="post" action="/login" class="form-horizontal">
+                <span class="heading"><@spring.message 'login.upper_case_title'/></span>
+                <div class="form-group">
+                    <input name="username" type="text" required class="form-control" placeholder="<@spring.message 'common.username_word'/>">
+                    <i class="fa fa-at"></i>
+                </div>
+                <div class="form-group">
+                    <input name="password" type="password" required class="form-control" placeholder="<@spring.message 'common.password_word'/>">
+                    <i class="fa fa-lock"></i>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-1">
+                        <a class="text" href="/signup"><@spring.message 'signup.title'/></a>
+                    </div>
+                    <button type="submit" class="btn btn-default"><@spring.message 'login.upper_case_confirm_sign_in_word'/></button>
+                </div>
             </form>
-            <table>
-                <th>ID</th>
-                <th>FIRST NAME</th>
-                <th>LAST NAME</th>
-                <th>AGE</th>
-                <#list studentsList as student>
-                <tr>
-                    <td>${student.id}</td>
-                    <td>${student.firstName}</td>
-                    <td>${student.lastName}</td>
-                    <td>${student.age}</td>
-                </tr>
-            </#list>
-            </table>
         </div>
-        <div class="col-md-1">
+        <div class="col-md-offset-2 col-md-1">
             <a class="dropdown">
                 <a class="fa fa-globe loc-button dropdown-toggle btn btn-default" href="#" id="language" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -53,7 +47,6 @@
         </div>
     </div>
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"></script>

@@ -5,30 +5,30 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import ru.itis.rasimusv.forms.SignInForm;
+import ru.itis.rasimusv.forms.LogInForm;
 import ru.itis.rasimusv.services.UsersService;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 @Controller
-public class SignInController {
+public class LogInController {
 
     private final UsersService usersService;
 
-    public SignInController(UsersService usersService) {
+    public LogInController(UsersService usersService) {
         this.usersService = usersService;
     }
 
-    @GetMapping(value = "/signin")
+    @GetMapping(value = "/login")
     public String getPage(HttpSession session) {
 
         session.setAttribute("Authenticated", "false");
-        return "signin";
+        return "login";
     }
 
-    /*@PostMapping(value = "/signin")
-    public String logIn(@Valid SignInForm form, BindingResult bindingResult, Model model, HttpSession session) {
+    /*@PostMapping(value = "/login")
+    public String logIn(@Valid LogInForm form, BindingResult bindingResult, Model model, HttpSession session) {
 
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().stream().anyMatch(error -> {
@@ -38,23 +38,23 @@ public class SignInController {
                 return true;
             });
 
-            model.addAttribute("signInForm", form);
+            model.addAttribute("logInForm", form);
 
         } else if (usersService.correctPassword(form)) {
             session.setAttribute("Authenticated", "true");
             return "redirect:/";
         }
-        return "signin";
+        return "login";
     }*/
 
-    @PostMapping(value = "/signin")
-    public String logIn(@Valid SignInForm form, BindingResult bindingResult, Model model, HttpSession session) {
+    @PostMapping(value = "/login")
+    public String logIn(@Valid LogInForm form, BindingResult bindingResult, Model model, HttpSession session) {
 
         if (usersService.correctPassword(form)) {
             session.setAttribute("Authenticated", "true");
             return "redirect:/";
         }
-        return "signin";
+        return "login";
     }
 }
 

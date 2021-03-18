@@ -23,13 +23,8 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.ui.freemarker.SpringTemplateLoader;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
-import ru.itis.rasimusv.interceptors.AuthInterceptor;
-import ru.itis.rasimusv.interceptors.RequestsLoggingInterceptor;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -43,31 +38,12 @@ import java.util.concurrent.Executors;
 @EnableJpaRepositories(basePackages = "ru.itis.rasimusv.repositories")
 @PropertySource("classpath:application.properties")
 @ComponentScan(basePackages = "ru.itis.rasimusv")
-public class ApplicationConfig implements WebMvcConfigurer {
+public class ApplicationConfig {
 
     private final Environment environment;
 
-    private final AuthInterceptor authInterceptor;
-
-    private final RequestsLoggingInterceptor requestsLoggingInterceptor;
-
-    public ApplicationConfig(Environment environment, AuthInterceptor authInterceptor, RequestsLoggingInterceptor requestsLoggingInterceptor) {
+    public ApplicationConfig(Environment environment) {
         this.environment = environment;
-        this.authInterceptor = authInterceptor;
-        this.requestsLoggingInterceptor = requestsLoggingInterceptor;
-    }
-
-    @Override
-    public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(authInterceptor).addPathPatterns("/users", "/students");
-        registry.addInterceptor(requestsLoggingInterceptor).addPathPatterns("/**");
-    }
-
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/**")
-                .addResourceLocations("/public", "/static/")
-                .setCachePeriod(31556926);
     }
 
     @Bean

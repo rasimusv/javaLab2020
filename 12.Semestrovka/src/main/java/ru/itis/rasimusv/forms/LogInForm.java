@@ -11,7 +11,7 @@ import ru.itis.rasimusv.validation.ValidPassword;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class SignInForm {
+public class LogInForm {
 
     private String username;
 

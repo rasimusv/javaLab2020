@@ -1,6 +1,7 @@
 <#ftl encoding="UTF-8"/>
+<#import "spring.ftl" as spring/>
 <!doctype html>
-<html lang="en">
+<html lang="<@spring.message 'common.lang'/>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,45 +12,54 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="/static/css/main.css">
 
-    <title>Вход</title>
+    <title><@spring.message 'signup.title'/></title>
 </head>
 <body>
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col-md-offset-3 col-md-6">
             <form method="post" action="/signup" class="form-horizontal">
-                <span class="heading">РЕГИСТРАЦИЯ</span>
+                <span class="heading"><@spring.message 'signup.upper_case_title'/></span>
                 <div class="form-group">
-                    <input name="username" type="text" required class="form-control" placeholder="Никнейм">
-                    <i class="fa fa-mail-forward"></i>
-                </div>
-                <div class="form-group">
-                    <input name="firstName" type="text" required class="form-control" placeholder="Имя">
-                    <i class="fa fa-user"></i>
-                </div>
-                <div class="form-group">
-                    <input name="lastName" type="text" required class="form-control" placeholder="Фамилия">
-                    <i class="fa fa-user"></i>
-                </div>
-                <div class="form-group">
-                    <input name="email" type="email" class="form-control" placeholder="E-mail">
+                    <input name="username" type="text" required class="form-control" placeholder="<@spring.message 'common.username_word'/>">
                     <i class="fa fa-at"></i>
                 </div>
                 <div class="form-group">
-                    <input name="password" type="password" required class="form-control" placeholder="Пароль">
+                    <input name="firstName" type="text" required class="form-control" placeholder="<@spring.message 'common.first_name_word'/>">
+                    <i class="fa fa-user"></i>
+                </div>
+                <div class="form-group">
+                    <input name="lastName" type="text" required class="form-control" placeholder="<@spring.message 'common.last_name_word'/>">
+                    <i class="fa fa-user"></i>
+                </div>
+                <div class="form-group">
+                    <input name="email" type="email" class="form-control" placeholder="<@spring.message 'common.email_word'/>">
+                    <i class="fa fa-envelope"></i>
+                </div>
+                <div class="form-group">
+                    <input name="password" type="password" required class="form-control" placeholder="<@spring.message 'common.password_word'/>">
                     <i class="fa fa-lock"></i>
                 </div>
                 <div class="form-group">
-                    <input name="repeatPassword" type="password" required class="form-control" placeholder="Повторите пароль">
+                    <input name="repeatPassword" type="password" required class="form-control" placeholder="<@spring.message 'common.repeat_password_word'/>">
                     <i class="fa fa-lock"></i>
                 </div>
                 <div class="form-group">
                     <div class="col-lg-1">
-                        <a class="text" href="/signin">Вход</a>
+                        <a class="text" href="/login"><@spring.message 'login.title'/></a>
                     </div>
-                    <button type="submit" class="btn btn-default">ЗАРЕГИСТРИРОВАТЬСЯ</button>
+                    <button type="submit" class="btn btn-default"><@spring.message 'signup.upper_case_confirm_sign_up_word'/></button>
                 </div>
             </form>
+        </div>
+        <div class="col-md-offset-2 col-md-1">
+            <a class="dropdown">
+                <a class="fa fa-globe loc-button dropdown-toggle btn btn-default" href="#" id="language" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="?lang=ru">Русский</a></li>
+                    <li><a class="dropdown-item" href="?lang=en">English</a></li>
+                </ul>
+            </a>
         </div>
     </div>
 </div>

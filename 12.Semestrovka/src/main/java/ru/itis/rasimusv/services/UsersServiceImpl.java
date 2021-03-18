@@ -1,11 +1,10 @@
 package ru.itis.rasimusv.services;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.itis.rasimusv.dto.UserDto;
 import ru.itis.rasimusv.dto.ViewUserDto;
-import ru.itis.rasimusv.forms.SignInForm;
+import ru.itis.rasimusv.forms.LogInForm;
 import ru.itis.rasimusv.models.User;
 import ru.itis.rasimusv.repositories.UsersRepository;
 
@@ -71,7 +70,7 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public boolean correctPassword(SignInForm userDto) {
+    public boolean correctPassword(LogInForm userDto) {
         Optional<UserDto> mayBeUser = findUserByUsername(userDto.getUsername());
 
         if(mayBeUser.isPresent()) {

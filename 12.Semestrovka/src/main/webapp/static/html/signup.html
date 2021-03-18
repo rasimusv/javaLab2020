@@ -10,17 +10,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="../css/main.css">
 
-    <title>Вход</title>
+    <title>Регистрация</title>
 </head>
 <body>
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col-md-offset-3 col-md-6">
             <form method="post" action="/signup" class="form-horizontal">
                 <span class="heading">РЕГИСТРАЦИЯ</span>
                 <div class="form-group">
                     <input name="username" type="text" required class="form-control" placeholder="Никнейм">
-                    <i class="fa fa-mail-forward"></i>
+                    <i class="fa fa-at"></i>
                 </div>
                 <div class="form-group">
                     <input name="firstname" type="text" required class="form-control" placeholder="Имя">
@@ -32,7 +32,7 @@
                 </div>
                 <div class="form-group">
                     <input name="email" type="email" class="form-control" placeholder="E-mail">
-                    <i class="fa fa-at"></i>
+                    <i class="fa fa-envelope"></i>
                 </div>
                 <div class="form-group">
                     <input name="password" type="password" required class="form-control" placeholder="Пароль">
@@ -44,11 +44,20 @@
                 </div>
                 <div class="form-group">
                     <div class="col-lg-1">
-                        <a class="text" href="/signin">Вход</a>
+                        <a class="text" href="/login">Вход</a>
                     </div>
                     <button type="submit" class="btn btn-default">ЗАРЕГИСТРИРОВАТЬСЯ</button>
                 </div>
             </form>
+        </div>
+        <div class="col-md-offset-2 col-md-1">
+            <a class="dropdown">
+                <a class="fa fa-globe loc-button dropdown-toggle btn btn-default" href="#" id="language" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="?lang=ru">Русский</a></li>
+                    <li><a class="dropdown-item" href="?lang=en">English</a></li>
+                </ul>
+            </a>
         </div>
     </div>
 </div>

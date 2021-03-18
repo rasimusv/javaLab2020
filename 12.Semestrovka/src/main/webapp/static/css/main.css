@@ -1,3 +1,10 @@
+
+.loc-button{
+    margin-top: 10%;
+    float: right;
+    border-radius: 30px;
+}
+
 .form-horizontal{
     background: #fff;
     padding-bottom: 40px;
@@ -99,6 +106,7 @@
     line-height: 20px;
     padding-top: 5px;
     text-transform: capitalize;
+    white-space: nowrap;
 }
 .form-horizontal .btn{
     float: right;
