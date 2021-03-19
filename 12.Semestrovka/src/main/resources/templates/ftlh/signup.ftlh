@@ -1,7 +1,15 @@
 <#ftl encoding="UTF-8"/>
 <#import "spring.ftl" as spring/>
+
+<#assign username_word><@spring.message 'common.username_word'/></#assign>
+<#assign first_name_word><@spring.message 'common.first_name_word'/></#assign>
+<#assign last_name_word><@spring.message 'common.last_name_word'/></#assign>
+<#assign email_word><@spring.message 'common.email_word'/></#assign>
+<#assign password_word><@spring.message 'common.password_word'/></#assign>
+<#assign repeat_password_word><@spring.message 'common.repeat_password_word'/></#assign>
+
 <!doctype html>
-<html lang="<@spring.message 'common.lang'/>">
+<html lang="<@spring.message 'common.lang'/> ">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,30 +26,37 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-offset-3 col-md-6">
+            <@spring.bind "signUpForm"/>
             <form method="post" action="/signup" class="form-horizontal">
                 <span class="heading"><@spring.message 'signup.upper_case_title'/></span>
                 <div class="form-group">
-                    <input name="username" type="text" required class="form-control" placeholder="<@spring.message 'common.username_word'/>">
+                    <@spring.formInput path="signUpForm.username" attributes='class="form-control" placeholder="${username_word}"'/>
+                    <@spring.showErrors "<div>" "invalid-feedback error-text"/>
                     <i class="fa fa-at"></i>
                 </div>
                 <div class="form-group">
-                    <input name="firstName" type="text" required class="form-control" placeholder="<@spring.message 'common.first_name_word'/>">
+                    <@spring.formInput path="signUpForm.firstName" attributes='class="form-control" placeholder="${first_name_word}"'/>
+                    <@spring.showErrors "<div>" "invalid-feedback error-text"/>
                     <i class="fa fa-user"></i>
                 </div>
                 <div class="form-group">
-                    <input name="lastName" type="text" required class="form-control" placeholder="<@spring.message 'common.last_name_word'/>">
+                    <@spring.formInput path="signUpForm.lastName" attributes='class="form-control" placeholder="${last_name_word}"'/>
+                    <@spring.showErrors "<div>" "invalid-feedback error-text"/>
                     <i class="fa fa-user"></i>
                 </div>
                 <div class="form-group">
-                    <input name="email" type="email" class="form-control" placeholder="<@spring.message 'common.email_word'/>">
+                    <@spring.formInput path="signUpForm.email" attributes='class="form-control" placeholder="${email_word}"' fieldType="email"/>
+                    <@spring.showErrors "<div>" "invalid-feedback error-text"/>
                     <i class="fa fa-envelope"></i>
                 </div>
                 <div class="form-group">
-                    <input name="password" type="password" required class="form-control" placeholder="<@spring.message 'common.password_word'/>">
+                    <@spring.formPasswordInput path="signUpForm.password" attributes='class="form-control" placeholder="${password_word}"'/>
+                    <@spring.showErrors "<div>" "invalid-feedback error-text"/>
                     <i class="fa fa-lock"></i>
                 </div>
                 <div class="form-group">
-                    <input name="repeatPassword" type="password" required class="form-control" placeholder="<@spring.message 'common.repeat_password_word'/>">
+                    <@spring.formPasswordInput path="signUpForm.repeatPassword" attributes='class="form-control" placeholder="${repeat_password_word}"'/>
+                    <@spring.showErrors "<div>" "invalid-feedback error-text"/>
                     <i class="fa fa-lock"></i>
                 </div>
                 <div class="form-group">

@@ -1,5 +1,9 @@
 <#ftl encoding="UTF-8"/>
 <#import "spring.ftl" as spring/>
+
+<#assign username_word><@spring.message 'common.username_word'/></#assign>
+<#assign password_word><@spring.message 'common.password_word'/></#assign>
+
 <!doctype html>
 <html lang="<@spring.message 'common.lang'/>">
 <head>
@@ -18,14 +22,17 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-offset-3 col-md-6">
+            <@spring.bind "logInForm"/>
             <form method="post" action="/login" class="form-horizontal">
                 <span class="heading"><@spring.message 'login.upper_case_title'/></span>
                 <div class="form-group">
-                    <input name="username" type="text" required class="form-control" placeholder="<@spring.message 'common.username_word'/>">
+                    <@spring.formInput path="logInForm.username" attributes='class="form-control" placeholder="${username_word}"'/>
+                    <@spring.showErrors "<div>" "invalid-feedback error-text"/>
                     <i class="fa fa-at"></i>
                 </div>
                 <div class="form-group">
-                    <input name="password" type="password" required class="form-control" placeholder="<@spring.message 'common.password_word'/>">
+                    <@spring.formPasswordInput path="logInForm.password" attributes='class="form-control" placeholder="${password_word}"'/>
+                    <@spring.showErrors "<div>" "invalid-feedback error-text"/>
                     <i class="fa fa-lock"></i>
                 </div>
                 <div class="form-group">

@@ -2,6 +2,8 @@ package ru.itis.rasimusv.forms;
 
 import lombok.Data;
 
+import javax.validation.constraints.Email;
+
 @Data
 /*@ValidNames(
         message = "{errors.invalid.names}",
@@ -14,7 +16,7 @@ public class SignUpForm {
     private String firstName;
     private String lastName;
 
-    //@Email(message = "{errors.incorrect.email}")
+    @Email(message = "{errors.incorrect.email}")
     private String email;
 
     //@ValidPassword(message = "{errors.invalid.password}")

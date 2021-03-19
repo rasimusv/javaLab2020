@@ -21,8 +21,8 @@ public class LogInController {
     }
 
     @GetMapping(value = "/login")
-    public String getPage(HttpSession session) {
-
+    public String getPage(Model model, HttpSession session) {
+        model.addAttribute("logInForm", new LogInForm());
         session.setAttribute("Authenticated", "false");
         return "login";
     }
@@ -49,10 +49,9 @@ public class LogInController {
 
     @PostMapping(value = "/login")
     public String logIn(@Valid LogInForm form, BindingResult bindingResult, Model model, HttpSession session) {
-
         if (usersService.correctPassword(form)) {
             session.setAttribute("Authenticated", "true");
-            return "redirect:/";
+            return "redirect:/success";
         }
         return "login";
     }

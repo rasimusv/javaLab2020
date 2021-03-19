@@ -15,6 +15,6 @@ public class LogInForm {
 
     private String username;
 
-    @ValidPassword(message = "{errors.invalid.password}")
+    //@ValidPassword(message = "{errors.invalid.password}")
     private String password;
 }
