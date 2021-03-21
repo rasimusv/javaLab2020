@@ -27,12 +27,14 @@
                 <span class="heading"><@spring.message 'login.upper_case_title'/></span>
                 <div class="form-group">
                     <@spring.formInput path="logInForm.username" attributes='class="form-control" placeholder="${username_word}"'/>
-                    <@spring.showErrors "<div>" "invalid-feedback error-text"/>
+                    <@spring.showErrors "" "invalid-feedback error-text"/>
+                    <#if credentialsErrorMessage??><span class="invalid-feedback error-text">${credentialsErrorMessage}</span></#if>
                     <i class="fa fa-at"></i>
                 </div>
                 <div class="form-group">
                     <@spring.formPasswordInput path="logInForm.password" attributes='class="form-control" placeholder="${password_word}"'/>
-                    <@spring.showErrors "<div>" "invalid-feedback error-text"/>
+                    <@spring.showErrors "" "invalid-feedback error-text"/>
+                    <#if credentialsErrorMessage??><span class="invalid-feedback error-text">${credentialsErrorMessage}</span></#if>
                     <i class="fa fa-lock"></i>
                 </div>
                 <div class="form-group">

@@ -14,7 +14,6 @@ public class NamesValidator implements ConstraintValidator<ValidNames, Object> {
     public void initialize(ValidNames constraintAnnotation) {
         this.namePropertyName = constraintAnnotation.name(); // название поля для name -> firstName
         this.surnamePropertyName = constraintAnnotation.surname(); // название поля для surname -> lastName
-
     }
 
     @Override
@@ -22,6 +21,6 @@ public class NamesValidator implements ConstraintValidator<ValidNames, Object> {
         Object name = new BeanWrapperImpl(value).getPropertyValue(namePropertyName); //получили конкретные значения
         Object surname = new BeanWrapperImpl(value).getPropertyValue(surnamePropertyName);
 
-        return name != null && !name.equals(surname);
+        return !name.equals(surname);
     }
 }

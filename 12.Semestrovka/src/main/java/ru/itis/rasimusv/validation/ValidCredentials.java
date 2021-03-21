@@ -7,11 +7,15 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Constraint(validatedBy = PasswordValidator.class)
-@Target({ElementType.METHOD, ElementType.FIELD})
+@Constraint(validatedBy = CredentialsValidator.class)
+@Target({ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ValidPassword {
-    String message() default "Invalid password";
+public @interface ValidCredentials {
+    String message() default "Invalid credentials";
+
+    String username();
+    String password();
+
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

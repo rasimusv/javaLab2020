@@ -1,3 +1,16 @@
+.embed-responsive-a4 {
+    padding-bottom: 141.5%;
+}
+
+.badge-download{
+    display: block;
+    font-size: 20px;
+    color: black;
+    border-color: black;
+    border-style: double;
+    background-color: white;
+}
+
 .error-text {
     text-align: left;
     margin-left: 45px;

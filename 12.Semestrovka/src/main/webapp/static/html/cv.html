@@ -4,60 +4,77 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
-          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../css/main.css"/>
 
     <title>Расим Гарипов</title>
 </head>
 <body>
-<nav class="navbar navbar-dark bg-dark navbar-expand-lg">
-    <div class="container-xxl">
-        <div>
-            <img src="../images/portrait.jpg" alt="" width="60" class="navbar-left round">
-            <a class="navbar-brand navbar-left" href="#">Расим Гарипов</a>
-        </div>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Главная</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="links" role="button" data-bs-toggle="dropdown"
-                       aria-expanded="false">
-                        Ссылки</a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="https://t.me/rasimusv">Телеграмм</a></li>
-                        <li><a class="dropdown-item" href="https://vk.com/rasimusv">ВК</a></li>
-                        <li><a class="dropdown-item" href="https://twitter.com/TatarskiyDrug">Твиттер</a></li>
-                        <li><a class="dropdown-item" href="https://www.instagram.com/rasimus_v/">Инстаграмм</a></li>
-                        <li><a class="dropdown-item" href="https://www.facebook.com/rasimusv">Фейсбук</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="repositories" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
-                        Работы</a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="https://github.com/rasimusv">GitHub</a></li>
-                        <li><a class="dropdown-item" href="https://gitlab.com/rasimusv">GitLab</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="fa fa-globe nav-link dropdown-toggle" href="#" id="language" role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false"></a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="?lang=ru">Русский</a></li>
-                        <li><a class="dropdown-item" href="?lang=en">English</a></li>
-                    </ul>
-                </li>
-            </ul>
+<header class="navbar navbar-expand navbar-dark flex-column flex-md-row bg-dark">
+    <div class="navbar-brand navbar-text" >
+        <a href="/">Расим Гарипов</a>
+    </div>
+    <img src="../images/portrait.jpg" alt="" width="75" class="round d-inline-block align-top"/>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-md-auto me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+                <a class="fa fa-globe nav-link dropdown-toggle mt-1" href="#" id="language" role="button"
+                   data-bs-toggle="dropdown" aria-expanded="false"></a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="?lang=ru">Русский</a></li>
+                    <li><a class="dropdown-item" href="?lang=en">English</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#">Главная</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="links" role="button" data-bs-toggle="dropdown"
+                   aria-expanded="false">
+                    Ссылки</a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="https://t.me/rasimusv">Телеграмм</a></li>
+                    <li><a class="dropdown-item" href="https://vk.com/rasimusv">ВК</a></li>
+                    <li><a class="dropdown-item" href="https://twitter.com/TatarskiyDrug">Твиттер</a></li>
+                    <li><a class="dropdown-item" href="https://www.instagram.com/rasimus_v/">Инстаграмм</a></li>
+                    <li><a class="dropdown-item" href="https://www.facebook.com/rasimusv">Фейсбук</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="repositories" role="button"
+                   data-bs-toggle="dropdown" aria-expanded="false">
+                    Работы</a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="https://github.com/rasimusv">GitHub</a></li>
+                    <li><a class="dropdown-item" href="https://gitlab.com/rasimusv">GitLab</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</header>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="offset-md-2 col-md-8">
+            <div class="embed-responsive embed-responsive-a4">
+                <object data="../pdf/CV_Rus.pdf" width="100%" height="100%" class="center-block embed-responsive-item"></object>
+            </div>
         </div>
     </div>
-</nav>
-
+    <div class="row">
+        <div class="offset-md-2 col-md-8">
+            <div class="badge badge-download mt-5">
+                <i class="fa fa-download"></i>
+                <a href="../pdf/CV_Rus.pdf" download>Скачать обычный CV</a>
+            </div><br>
+            <div class="badge badge-download mb-5">
+                <i class="fa fa-download"></i>
+                <a href="../pdf/EuropassCV.pdf" download>Скачать CV стандарта Europass</a>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"

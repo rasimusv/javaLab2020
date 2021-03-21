@@ -4,7 +4,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.itis.rasimusv.dto.UserDto;
 import ru.itis.rasimusv.dto.ViewUserDto;
-import ru.itis.rasimusv.forms.LogInForm;
 import ru.itis.rasimusv.models.User;
 import ru.itis.rasimusv.repositories.UsersRepository;
 
@@ -70,18 +69,6 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
-    public boolean correctPassword(LogInForm userDto) {
-        Optional<UserDto> mayBeUser = findUserByUsername(userDto.getUsername());
-
-        if(mayBeUser.isPresent()) {
-            UserDto user = mayBeUser.get();
-            String hashPassword = user.getHashPassword();
-            return (hashPassword != null) && (passwordEncoder.matches(userDto.getPassword(), hashPassword));
-        }
-        return false;
-    }
-
-    @Override
     public void confirm(String confirmCode) {
         Optional<User> mayBeUser = usersRepository.findByConfirmCode(confirmCode);
         if (mayBeUser.isPresent()) {
@@ -89,6 +76,23 @@ public class UsersServiceImpl implements UsersService {
             user.setState(User.State.CONFIRMED);
             usersRepository.save(user);
         }
+    }
+
+    @Override
+    public boolean containsUserWithEmail(String email) {
+        return usersRepository.findByEmail(email).isPresent();
+    }
+
+    @Override
+    public boolean correctCredentials(String username, String password) {
+        Optional<UserDto> mayBeUser = findUserByUsername(username);
+
+        if(mayBeUser.isPresent()) {
+            UserDto user = mayBeUser.get();
+            String hashPassword = user.getHashPassword();
+            return (hashPassword != null) && (passwordEncoder.matches(password, hashPassword));
+        }
+        return false;
     }
 
 }

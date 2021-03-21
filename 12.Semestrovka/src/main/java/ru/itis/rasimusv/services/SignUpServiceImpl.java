@@ -1,6 +1,5 @@
 package ru.itis.rasimusv.services;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -12,7 +11,6 @@ import ru.itis.rasimusv.util.MailsGenerator;
 
 import java.util.UUID;
 
-@Slf4j
 @Service
 public class SignUpServiceImpl implements SignUpService {
 
@@ -41,9 +39,19 @@ public class SignUpServiceImpl implements SignUpService {
     }
 
     @Override
+    public boolean usernameIsAvailable(SignUpForm form) {
+        return !usersService.containsUserWithUsername(form.getUsername());
+    }
+
+    @Override
+    public boolean emailIsAvailable(SignUpForm form) {
+        return !usersService.containsUserWithEmail(form.getEmail());
+    }
+
+    @Override
     public boolean signUp(SignUpForm form) {
 
-        if (form.getPassword().equals(form.getRepeatPassword()) && !usersService.containsUserWithUsername(form.getUsername())) {
+        if (form.getPassword().equals(form.getRepeatPassword()) && usernameIsAvailable(form) && emailIsAvailable(form)) {
             String hashPassword = passwordEncoder.encode(form.getPassword());
 
             UserDto newUser = UserDto.builder()
@@ -55,8 +63,6 @@ public class SignUpServiceImpl implements SignUpService {
                     .confirmCode(UUID.randomUUID().toString())
                     .state(User.State.NOT_CONFIRMED)
                     .build();
-
-            log.error(newUser.toString());
 
             usersService.addUser(newUser);
 

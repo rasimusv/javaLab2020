@@ -7,11 +7,24 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-@Constraint(validatedBy = PasswordValidator.class)
-@Target({ElementType.METHOD, ElementType.FIELD})
+@Constraint(validatedBy = FieldMatchValidator.class)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ValidPassword {
-    String message() default "Invalid password";
+public @interface FieldMatch
+{
+    String message() default "fields are different";
+
     Class<?>[] groups() default {};
+
     Class<? extends Payload>[] payload() default {};
+
+    String first();
+
+    String second();
+
+    @Target({ElementType.TYPE, ElementType.ANNOTATION_TYPE})
+    @Retention(RetentionPolicy.RUNTIME)
+    @interface List
+    {
+        FieldMatch[] value();
+    }
 }

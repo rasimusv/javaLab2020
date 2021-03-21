@@ -10,6 +10,7 @@ import ru.itis.rasimusv.services.SignUpService;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.Objects;
 
 @Controller
 public class SignUpController {
@@ -35,6 +36,17 @@ public class SignUpController {
     @PostMapping("/signup")
     public String signUp(@Valid SignUpForm form, BindingResult bindingResult, Model model, HttpSession session) {
         if (bindingResult.hasErrors()) {
+
+            bindingResult.getAllErrors().stream().anyMatch(error -> {
+                if (Objects.requireNonNull(error.getCodes())[0].equals("signUpForm.ValidNames")) {
+                    model.addAttribute("namesErrorMessage", error.getDefaultMessage());
+                }
+                if (Objects.requireNonNull(error.getCodes())[0].equals("signUpForm.FieldMatch")) {
+                    model.addAttribute("passwordMismatchErrorMessage", error.getDefaultMessage());
+                }
+                return true;
+            });
+
             model.addAttribute("signUpForm", form);
             return "signup";
         }
