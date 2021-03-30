@@ -61,6 +61,10 @@
                     <#if passwordMismatchErrorMessage??><span class="invalid-feedback error-text">${passwordMismatchErrorMessage}</span></#if>
                     <i class="fa fa-lock"></i>
                 </div>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+                <#if isSignedUp??>
+                    <@spring.message 'signup.user_already_signed_up'/>
+                </#if>
                 <div class="form-group">
                     <div class="col-lg-1">
                         <a class="text" href="/login"><@spring.message 'login.title'/></a>

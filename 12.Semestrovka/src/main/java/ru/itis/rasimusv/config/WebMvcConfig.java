@@ -63,7 +63,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(authInterceptor).addPathPatterns("/users", "/students");
+        //registry.addInterceptor(authInterceptor).addPathPatterns("/users", "/students");
         registry.addInterceptor(requestsLoggingInterceptor).addPathPatterns("/**");
         registry.addInterceptor(localeChangeInterceptor());
     }

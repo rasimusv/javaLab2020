@@ -12,6 +12,8 @@ public interface UsersService {
 
     List<UserDto> getAllUsers();
 
+    List<UserDto> getAllUsers(int page, int size);
+
     List<ViewUserDto> getAllViewUsers();
 
     List<ViewUserDto> getAllViewUsers(int page, int size);
@@ -24,8 +26,12 @@ public interface UsersService {
 
     void confirm(String confirmCode);
 
+    void ban(Long userId);
+
     boolean containsUserWithEmail(String email);
 
     boolean correctCredentials(String username, String password);
+
+    boolean isConfirmed(String username);
 }
 

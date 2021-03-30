@@ -37,6 +37,18 @@
                     <#if credentialsErrorMessage??><span class="invalid-feedback error-text">${credentialsErrorMessage}</span></#if>
                     <i class="fa fa-lock"></i>
                 </div>
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+                <#if isNotConfirmed??>
+                    <@spring.message 'login.user_not_confirmed'/>
+                </#if>
+                <div class="form-group">
+                    <div class="checkbox-special col-sm-5">
+                        <div class="form-control ml-0">
+                            <input type="checkbox" id="remember-me" name="remember-me" class="custom-checkbox">
+                            <label for="remember-me" style="color: #555"><@spring.message 'common.remember_me_word'/></label>
+                        </div>
+                    </div>
+                </div>
                 <div class="form-group">
                     <div class="col-lg-1">
                         <a class="text" href="/signup"><@spring.message 'signup.title'/></a>

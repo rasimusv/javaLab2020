@@ -159,9 +159,12 @@ public class ApplicationConfig {
     private Properties additionalProperties() {
         Properties properties = new Properties();
         properties.put("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.auto"));
+        properties.put("hibernate.hbm2ddl.import_files", environment.getProperty("hibernate.hbm2ddl.import_files"));
+        properties.put("hibernate.hbm2ddl.import_files_sql_extractor", environment.getProperty("hibernate.hbm2ddl.import_files_sql_extractor"));
         properties.put("hibernate.dialect", environment.getProperty("hibernate.dialect"));
+        properties.put("hibernate.connection.charSet", environment.getProperty("hibernate.connection.charSet"));
         properties.put("hibernate.show_sql", environment.getProperty("hibernate.show_sql"));
-
+        properties.put("connection.autocommit", environment.getProperty("connection.autocommit"));
         return properties;
     }
 }

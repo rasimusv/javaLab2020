@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import ru.itis.rasimusv.forms.LogInForm;
 import ru.itis.rasimusv.services.LogInService;
@@ -12,14 +13,16 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.Objects;
 
+
 @Controller
 public class LogInController {
 
-    private final LogInService logInService;
+    /*private final LogInService logInService;
 
     public LogInController(LogInService logInService) {
         this.logInService = logInService;
     }
+     */
 
     @GetMapping(value = "/login")
     public String getPage(Model model, HttpSession session) {
@@ -28,7 +31,7 @@ public class LogInController {
         return "login";
     }
 
-    @PostMapping(value = "/login")
+    /*@PostMapping(value = "/login")
     public String logIn(@Valid LogInForm form, BindingResult bindingResult, Model model, HttpSession session) {
 
         if (bindingResult.hasErrors()) {
@@ -43,11 +46,11 @@ public class LogInController {
             return "login";
         }
         if (logInService.correctPassword(form)) {
-            session.setAttribute("Authenticated", "true");
             return "redirect:/success";
         } else {
             return "login";
         }
     }
+     */
 }
 

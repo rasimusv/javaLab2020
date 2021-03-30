@@ -1,5 +1,6 @@
 package ru.itis.rasimusv.services;
 
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.itis.rasimusv.dto.UserDto;
@@ -34,12 +35,18 @@ public class UsersServiceImpl implements UsersService {
                 .hashPassword(userDto.getHashPassword())
                 .confirmCode(userDto.getConfirmCode())
                 .state(userDto.getState())
+                .role(userDto.getRole())
                 .build());
     }
 
     @Override
     public List<UserDto> getAllUsers() {
         return from(usersRepository.findAll());
+    }
+
+    @Override
+    public List<UserDto> getAllUsers(int page, int size) {
+        return from(usersRepository.findAll(PageRequest.of(page, size)).getContent());
     }
 
     @Override
@@ -79,6 +86,16 @@ public class UsersServiceImpl implements UsersService {
     }
 
     @Override
+    public void ban(Long userId) {
+        Optional<User> mayBeUser = usersRepository.findById(userId);
+        if (mayBeUser.isPresent()) {
+            User user = mayBeUser.get();
+            user.setState(User.State.BANNED);
+            usersRepository.save(user);
+        }
+    }
+
+    @Override
     public boolean containsUserWithEmail(String email) {
         return usersRepository.findByEmail(email).isPresent();
     }
@@ -94,5 +111,12 @@ public class UsersServiceImpl implements UsersService {
         }
         return false;
     }
+
+    @Override
+    public boolean isConfirmed(String username) {
+        Optional<User> mayBeUser = usersRepository.findByUsername(username);
+        return mayBeUser.filter(user -> user.getState() == User.State.CONFIRMED).isPresent();
+    }
+
 
 }

@@ -62,6 +62,7 @@ public class SignUpServiceImpl implements SignUpService {
                     .hashPassword(hashPassword)
                     .confirmCode(UUID.randomUUID().toString())
                     .state(User.State.NOT_CONFIRMED)
+                    .role(User.Role.USER)
                     .build();
 
             usersService.addUser(newUser);

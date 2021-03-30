@@ -24,6 +24,7 @@ public class UserDto {
     private String hashPassword;
     private String confirmCode;
     private User.State state;
+    private User.Role role;
 
     public static UserDto from(User user) {
         if (user == null) {
@@ -38,6 +39,7 @@ public class UserDto {
                 .hashPassword(user.getHashPassword())
                 .confirmCode(user.getConfirmCode())
                 .state(user.getState())
+                .role(user.getRole())
                 .build();
     }
 

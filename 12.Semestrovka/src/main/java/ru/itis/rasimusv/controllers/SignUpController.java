@@ -21,11 +21,6 @@ public class SignUpController {
         this.signUpService = signUpService;
     }
 
-    @GetMapping("/success")
-    public String getSuccess() {
-        return "success";
-    }
-
     @GetMapping("/signup")
     public String getSignUpPage(Model model, HttpSession session) {
         model.addAttribute("signUpForm", new SignUpForm());
@@ -34,7 +29,7 @@ public class SignUpController {
     }
 
     @PostMapping("/signup")
-    public String signUp(@Valid SignUpForm form, BindingResult bindingResult, Model model, HttpSession session) {
+    public String signUp(@Valid SignUpForm form, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
 
             bindingResult.getAllErrors().stream().anyMatch(error -> {
@@ -50,12 +45,7 @@ public class SignUpController {
             model.addAttribute("signUpForm", form);
             return "signup";
         }
-
-        if (signUpService.signUp(form)) {
-            session.setAttribute("Authenticated", "true");
-            return "redirect:/success";
-        } else {
-            return "signup";
-        }
+        signUpService.signUp(form);
+        return "redirect:/login";
     }
 }

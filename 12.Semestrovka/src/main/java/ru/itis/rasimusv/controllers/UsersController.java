@@ -24,12 +24,6 @@ public class UsersController {
         return "users";
     }
 
-    @GetMapping(value = "/confirm/{confirm-code}")
-    public String confirm(@PathVariable("confirm-code") String confirmCode) {
-        usersService.confirm(confirmCode);
-        return "redirect:/";
-    }
-
     @RequestMapping(value = "/users/{user-id}",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)

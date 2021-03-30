@@ -9,4 +9,6 @@ public interface SignUpService {
     boolean emailIsAvailable(SignUpForm form);
 
     boolean signUp(SignUpForm form);
+
+
 }
