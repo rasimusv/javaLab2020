@@ -19,6 +19,7 @@ import org.springframework.orm.jpa.vendor.Database;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.session.jdbc.config.annotation.web.http.EnableJdbcHttpSession;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.ui.freemarker.SpringTemplateLoader;
@@ -34,6 +35,7 @@ import java.util.concurrent.Executors;
 
 @EnableWebMvc
 @Configuration
+@EnableJdbcHttpSession
 @EnableTransactionManagement
 @EnableJpaRepositories(basePackages = "ru.itis.rasimusv.repositories")
 @PropertySource("classpath:application.properties")
@@ -152,7 +154,6 @@ public class ApplicationConfig {
     public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(entityManagerFactory);
-
         return transactionManager;
     }
 
