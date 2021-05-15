@@ -1,0 +1,86 @@
+POST http://localhost/login
+Content-Type: application/json
+
+{
+  "email": "rasimusv@gmail.com",
+  "password": "qwerty007"
+}
+
+###
+
+GET http://localhost/token
+
+###
+
+POST http://localhost/signup
+Content-Type: application/json
+
+{
+  "email": "rasim@gmail.com",
+  "password": "qwerty007",
+  "firstName": "Расим",
+  "lastName": "Гарипов",
+  "patronymic": "Ильнурович",
+  "state": "ACTIVE",
+  "role": "USER"
+}
+
+###
+
+GET http://localhost:80/teachers
+X-TOKEN: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwicm9sZSI6IkFETUlOIiwic3RhdGUiOiJBQ1RJVkUiLCJleHAiOjE2MjEyMDM4MTEsImVtYWlsIjoicmFzaW11c3ZAZ21haWwuY29tIn0.hylZNhI7PJK8Pv88gv-YRwUkyj5ES3BW78sJt5yBqDo
+###
+
+POST http://localhost/teachers
+Content-Type: application/json
+
+{
+  "firstName": "Марсель",
+  "lastName": "Сидиков"
+}
+
+###
+
+POST http://localhost/teachers
+Content-Type: application/json
+
+{
+  "firstName": "Михаил",
+  "lastName": "Абрамский"
+}
+
+###
+
+PUT http://localhost/teachers/1
+Content-Type: application/json
+
+{
+  "firstName": "Марсель",
+  "lastName": "Ситдиков"
+}
+
+###
+
+DELETE http://localhost/teachers/1
+
+###
+
+GET http://localhost:80/courses
+
+###
+
+POST http://localhost/courses
+Content-Type: application/json
+
+{
+  "title": "Информатика"
+}
+
+###
+
+POST http://localhost/courses/1/teachers
+Content-Type: application/json
+
+{
+  "id": 1
+}
