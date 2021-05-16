@@ -13,7 +13,7 @@ public class TokenAuthentication implements Authentication {
 
     private boolean isAuthenticated;
 
-    private String token;
+    private final String token;
 
     public String getToken() {
         return token;

@@ -27,8 +27,12 @@ Content-Type: application/json
 
 ###
 
+GET http://localhost:80/logout
+X-TOKEN: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwicm9sZSI6IkFETUlOIiwic3RhdGUiOiJBQ1RJVkUiLCJleHAiOjE2MjEyMTc0ODAsImVtYWlsIjoicmFzaW11c3ZAZ21haWwuY29tIn0.7AhLxmOjmvewoWaqrVSNwPNUSIv-gPe4fkGBIPn4MNY
+###
+
 GET http://localhost:80/teachers
-X-TOKEN: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwicm9sZSI6IkFETUlOIiwic3RhdGUiOiJBQ1RJVkUiLCJleHAiOjE2MjEyMDM4MTEsImVtYWlsIjoicmFzaW11c3ZAZ21haWwuY29tIn0.hylZNhI7PJK8Pv88gv-YRwUkyj5ES3BW78sJt5yBqDo
+X-TOKEN: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwicm9sZSI6IkFETUlOIiwic3RhdGUiOiJBQ1RJVkUiLCJleHAiOjE2MjEyMTc0ODAsImVtYWlsIjoicmFzaW11c3ZAZ21haWwuY29tIn0.7AhLxmOjmvewoWaqrVSNwPNUSIv-gPe4fkGBIPn4MNY
 ###
 
 POST http://localhost/teachers

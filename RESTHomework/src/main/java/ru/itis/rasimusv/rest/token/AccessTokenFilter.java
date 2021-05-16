@@ -1,7 +1,6 @@
 package ru.itis.rasimusv.rest.token;
 
 import org.springframework.stereotype.Component;
-import org.springframework.web.filter.OncePerRequestFilter;
 import ru.itis.rasimusv.rest.services.TokensService;
 
 import javax.servlet.*;
@@ -12,7 +11,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 @Component
-public class AccessTokenFilter extends OncePerRequestFilter {
+public class AccessTokenFilter implements Filter {
 
     private final TokensService tokensService;
 
@@ -21,7 +20,9 @@ public class AccessTokenFilter extends OncePerRequestFilter {
     }
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws IOException {
+    public void doFilter(ServletRequest sRequest, ServletResponse sResponse, FilterChain chain) throws IOException {
+        HttpServletRequest request = (HttpServletRequest) sRequest;
+        HttpServletResponse response = (HttpServletResponse) sResponse;
         boolean success = false;
         for (Cookie cookie: request.getCookies()) {
             if (cookie.getName().equals("refreshToken")) {
