@@ -3,10 +3,7 @@ package ru.itis.rasimusv.config;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import freemarker.template.TemplateExceptionHandler;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.ClassRelativeResourceLoader;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -37,6 +34,7 @@ import java.util.concurrent.Executors;
 @Configuration
 @EnableJdbcHttpSession
 @EnableTransactionManagement
+@EnableAspectJAutoProxy
 @EnableJpaRepositories(basePackages = "ru.itis.rasimusv.repositories")
 @PropertySource("classpath:application.properties")
 @ComponentScan(basePackages = "ru.itis.rasimusv")

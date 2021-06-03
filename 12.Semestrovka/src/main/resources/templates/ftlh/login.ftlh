@@ -43,7 +43,7 @@
                 </#if>
                 <div class="form-group">
                     <div class="checkbox-special col-sm-5">
-                        <div class="form-control ml-0">
+                        <div class="form-control checkbox-form">
                             <input type="checkbox" id="remember-id" name="remember-id" class="custom-checkbox">
                             <label for="remember-id" style="color: #555"><@spring.message 'common.remember_me_word'/></label>
                         </div>
