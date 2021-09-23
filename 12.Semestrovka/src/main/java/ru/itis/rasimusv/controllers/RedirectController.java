@@ -11,9 +11,15 @@ public class RedirectController {
     @Value("${anatolik.2021}")
     private String redirectAddress;
 
+    /*
     @GetMapping(value = "/anatolik2021")
     public String doRedirect() {
         return "redirect:" + redirectAddress;
+    }*/
+
+    @GetMapping(value = "/anatolik2021")
+    public String doRedirect() {
+        return "redirect:http://youtu.be/lm_3Zh28NKs";
     }
 
 }
